@@ -11,7 +11,6 @@
 (function() {
     'use strict';
     setInterval(openEvent, 1000);
-    setInterval(registerEvent, 1000);
 })();
 
 function openEvent(){
@@ -19,15 +18,16 @@ function openEvent(){
     let agenda = document.getElementsByClassName("event-item");
     while (i < agenda.length){
         if (agenda[i].getAttribute("data-event-kind") == "exam"){
-            console.log("Exam Found");
             let exam = agenda[i];
             let button = exam.getElementsByClassName("event-button");
             let full = exam.getElementsByClassName("event-full");
             let registered = exam.getElementsByClassName("event-registered");
-            if (full.length == 0 && registered.length != 0)
+            if (full.length == 0 && registered.length != 0){
                 button[0].click();
-            else
-                console.log("Exam full or already registered");
+                setTimeout(registerEvent, 1000);
+                console.log("Inscrit !");
+            }
+            console.log("Exam Found");
         }
         i++;
     }
@@ -37,7 +37,7 @@ function registerEvent(){
     let window = document.getElementsByClassName("modal-dialog");
     if (!window)
         return ;
-    let sub = window[0].getElementsByClassName("btn-default");
+    let sub = window[0].getElementsByClassName("btn-primary");
     if (sub.length != 0){
         sub[0].click();
     }
