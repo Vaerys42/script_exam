@@ -11,6 +11,7 @@
 (function() {
     'use strict';
     setInterval(openEvent, 1000);
+    document.reload(true);
 })();
 
 function openEvent(){
