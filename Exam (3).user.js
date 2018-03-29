@@ -10,8 +10,7 @@
 
 (function() {
     'use strict';
-    setInterval(openEvent, 1000);
-    document.reload(true);
+    setInterval(openEvent, 100000);
 })();
 
 function openEvent(){
@@ -23,7 +22,7 @@ function openEvent(){
             let button = exam.getElementsByClassName("event-button");
             let full = exam.getElementsByClassName("event-full");
             let registered = exam.getElementsByClassName("event-registered");
-            if (full.length == 0 && registered.length != 0){
+            if (full.length == 0 && registered.length == 0){
                 button[0].click();
                 setTimeout(registerEvent, 1000);
                 console.log("Inscrit !");
@@ -32,6 +31,7 @@ function openEvent(){
         }
         i++;
     }
+    document.reload(true);
 }
 
 function registerEvent(){
